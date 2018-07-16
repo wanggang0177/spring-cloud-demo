@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: spring-cloud-consumer-hystrix-dashboard
+  zipkin:
+    base-url: http://localhost:9000
+  sleuth:
+    sampler:
+      percentage: 1.0
+      
+server:
+  port: 9001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+#      defaultZone: http://eureka.neunb.rd/eureka/
+logging:
+  level:
+    eurekaconsumer.eurekaconsumer.feignclient.DcClient: DEBUG
+
+##开启熔断器    
+feign:
+  hystrix:
+    enabled: true
+hystrix:  
+  command:  
+    default:  
+      execution:
+        timeout:  
+          enabled: true    #开启超时设置
+        isolation:  
+          thread:  
+            timeoutInMilliseconds: 3000   #设置超时时间
+  
