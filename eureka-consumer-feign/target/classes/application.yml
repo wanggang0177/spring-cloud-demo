@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: eureka-consumer-feign
+  zipkin:
+    base-url: http://localhost:9000
+  sleuth:
+    sampler:
+      percentage: 1.0
+      
+server:
+  port: 2103
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+
+logging:
+  level:
+    eurekaconsumer.eurekaconsumer.feignclient.DcClient: DEBUG
+
+##开启熔断器    
+feign:
+  hystrix:
+    enabled: true
+hystrix:  
+  command:  
+    default:  
+      execution:
+        timeout:  
+          enabled: true    #开启超时设置
+        isolation:  
+          thread:  
+            timeoutInMilliseconds: 3000   #设置超时时间
