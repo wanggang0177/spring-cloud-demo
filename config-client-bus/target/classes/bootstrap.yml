@@ -1,0 +1,17 @@
+#简单实现通过服务访问配置中心
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      discovery:
+        enabled: true   #开启通过服务来访问Config Server的功能
+        serviceId: spring-cloud-config-server  #指定Config Server注册的服务名
+#      uri: http://localhost:8001/   #通过url访问Config Server
+      profile: dev
+      label: master
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/

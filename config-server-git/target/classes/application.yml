@@ -1,0 +1,32 @@
+server:
+  port: 8001
+  
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wanggang0177/-config-repo-demo     # 配置git仓库的地址
+#          search-paths: config-repo                             # git仓库地址下的相对地址，可以配置多个，用,分割。
+#          如果我们的Git仓库需要权限访问，那么可以通过配置下面的两个属性来实现
+#          username: username                                        # git仓库的账号
+#          password: password                                    # git仓库的密码
+  ## 开启消息跟踪
+  spring:
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+      
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/   ## 注册中心eurka地址
+
+management:
+  security:
+     enabled: false
+               

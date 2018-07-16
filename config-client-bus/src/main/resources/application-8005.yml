@@ -1,0 +1,20 @@
+server:
+  port: 8005
+
+management:
+  security:
+    enabled: false #springboot 1.5.X 以上默认开通了安全认证，所以需要在配置文件application.properties添加以下配置,否则localhost:2006/refresh 不会成功
+
+## 开启消息跟踪
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    bus:
+      trace:
+        enabled: true
+
+  
