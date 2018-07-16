@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: api-gateway
+  zipkin:
+    base-url: http://localhost:9000
+  sleuth:
+    sampler:
+      percentage: 1.0  #将采样比例设置为1.0，也就是全部都需要
+
+server:
+  port: 1101
+
+#60秒内请求超过5次会出错
+zuul:
+#  routes:
+#    eureka-client:
+#      path: /eureka-client/**
+#      serviceId: eureka-client
+#    eureka-consumer:
+#      path: /eureka-consumer-feign/**
+#      serviceId: aaaaa-1
+  ratelimit:
+    enabled: true
+    behind-proxy: true
+    policy-list:
+      eureka-client:
+        - limit: 5
+          refresh-interval: 60
+          type: 
+            - user    #ser是通过授权用户进行区分，也包括匿名用户
+            - origin  #origin是通过客户端IP地址区分
+            - url     #url类型的限流就是通过请求路径区分
+            
+#zuul:
+#  routes:
+#    eureka-client:
+#      path: /eureka-client/**
+#      serviceId: eureka-client
+#    eureka-consumer:
+#      path: /eureka-consumer/**
+#      serviceId: eureka-consumer
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+#      defaultZone: http://eureka.neunb.rd/eureka/ 
