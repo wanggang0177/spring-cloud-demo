@@ -1,0 +1,14 @@
+spring:
+  application:
+    name:  eureka-consumer-ribbon
+server:
+  port: 2102
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+#      defaultZone: http://eureka.neunb.rd/eureka/
+#改变ribbon负载均衡策略(eureka-client为服务名称)      
+eureka-client:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
