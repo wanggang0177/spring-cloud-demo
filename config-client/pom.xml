@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>config-client-bus</groupId>
-	<artifactId>config-client-bus</artifactId>
+	<artifactId>config-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 

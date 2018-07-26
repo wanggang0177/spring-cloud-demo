@@ -17,6 +17,8 @@
 #      trace:
 #        enabled: true
 
+#注释掉，使用配置中心统一存储在git中
+
 spring:
   profiles:
     active: 8005

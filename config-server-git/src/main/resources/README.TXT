@@ -8,3 +8,5 @@
 比如，要访问master分支，config-client应用的dev环境
 
 http://localhost:8001/config-client/dev/master
+
+curl -X POST http://localhost:8001/bus/refresh
